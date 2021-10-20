@@ -52,6 +52,23 @@ if __name__ == "__main__":
     loop.run_until_complete(main())
 ```
 
+## Data
+
+You can read the following data with this package, the `power flow` entity can also give a negative value. The `energy` entities are total values of both low and high tariff together.
+
+### Device
+
+- ID
+- Model
+- Firmware version
+- Manufacturer
+
+### SmartMeter
+
+- Power Flow (W)
+- Energy Consumption (kWh)
+- Energy Production (kWh)
+
 ## Setting up development environment
 
 This Python project is fully managed using the [Poetry][poetry] dependency

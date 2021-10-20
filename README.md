@@ -27,7 +27,7 @@ A python package with which you can read the data from your [Pure Energie Meter]
 ## Installation
 
 ```bash
-pip install pure_energie
+pip install pure-energie
 ```
 
 ## Usage

@@ -30,6 +30,28 @@ A python package with which you can read the data from your [Pure Energie Meter]
 pip install pure_energie
 ```
 
+## Usage
+
+```py
+import asyncio
+
+from pure_energie import PureEnergie
+
+async def main():
+    """Show example on getting data from your Pure Energie device."""
+    async with PureEnergie(
+        host="example.com",
+    ) as client:
+        device = await client.device()
+        smartmeter = await client.smartmeter()
+        print(device)
+        print(smartmeter)
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+```
+
 ## Setting up development environment
 
 This Python project is fully managed using the [Poetry][poetry] dependency
@@ -125,8 +147,8 @@ SOFTWARE.
 [maintainability-shield]: https://api.codeclimate.com/v1/badges/443c476612a574d82467/maintainability
 [maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-pem/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[pypi]: https://pypi.org/project/cemm/
-[python-versions-shield]: https://img.shields.io/pypi/pyversions/cemm
+[pypi]: https://pypi.org/project/pure_energie/
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/pure_energie
 [releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-pem.svg
 [releases]: https://github.com/klaasnicolaas/python-pem/releases
 [stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-pem.svg

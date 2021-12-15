@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from dataclasses import dataclass
 from typing import Any, Mapping
 
@@ -90,6 +91,7 @@ class PureEnergie:
             A Device data object from the Pure Energie device API.
         """
         data = await self.request("info")
+        data = json.loads(data)
         return Device.from_dict(data)
 
     async def smartmeter(self) -> SmartMeter:
@@ -99,6 +101,7 @@ class PureEnergie:
             A SmartMeter data object from the Pure Energie device API.
         """
         data = await self.request("meter/now")
+        data = json.loads(data)
         return SmartMeter.from_dict(data)
 
     async def close(self) -> None:

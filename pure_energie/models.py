@@ -1,7 +1,6 @@
 """Models for Pure Energie Meter."""
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 from typing import Any
 
@@ -24,7 +23,6 @@ class SmartMeter:
         Returns:
             A SmartMeter object.
         """
-        data = json.loads(data)
         data = data["elec"]
 
         def convert(value):
@@ -65,7 +63,6 @@ class Device:
         Returns:
             A Device object.
         """
-        data = json.loads(data)
 
         return Device(
             pem_id=data.get("id"),

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pure_energie"
 version = "0.0.0"
-description = "Asynchronous Python client for the Pure Energy devices"
+description = "Asynchronous Python client for the Pure Energie Meter devices"
 authors = ["Klaas Schoute <hello@student-techlife.com>"]
 maintainers = ["Klaas Schoute <hello@student-techlife.com>"]
 license = "MIT"
@@ -63,7 +63,7 @@ bandit = "^1.7.1"
 Changelog = "https://github.com/klaasnicolaas/python-pem/releases"
 
 [tool.black]
-target-version = ['py37']
+target-version = ['py38']
 
 [tool.coverage.paths]
 source = ["pure_energie"]
@@ -120,5 +120,5 @@ paths = ["pure_energie"]
 verbose = true
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["setuptools", "poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

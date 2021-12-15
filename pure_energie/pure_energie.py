@@ -2,11 +2,12 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from dataclasses import dataclass
 from typing import Any, Mapping
 
-import async_timeout
 from aiohttp.client import ClientError, ClientResponseError, ClientSession
+from async_timeout import timeout
 from yarl import URL
 
 from .exceptions import PureEnergieMeterConnectionError
@@ -28,7 +29,7 @@ class PureEnergie:
             session: Optional, shared, aiohttp client session.
         """
         self._session = session
-        self._close_session = False
+        self._close_session: bool = False
 
         self.host = host
         self.request_timeout = request_timeout
@@ -64,7 +65,7 @@ class PureEnergie:
             self._close_session = True
 
         try:
-            with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 response = await self._session.request(
                     "GET",
                     url,
@@ -90,6 +91,7 @@ class PureEnergie:
             A Device data object from the Pure Energie device API.
         """
         data = await self.request("info")
+        data = json.loads(data)
         return Device.from_dict(data)
 
     async def smartmeter(self) -> SmartMeter:
@@ -99,6 +101,7 @@ class PureEnergie:
             A SmartMeter data object from the Pure Energie device API.
         """
         data = await self.request("meter/now")
+        data = json.loads(data)
         return SmartMeter.from_dict(data)
 
     async def close(self) -> None:

@@ -4,7 +4,6 @@ from __future__ import annotations
 import asyncio
 import json
 from dataclasses import dataclass
-from importlib import metadata
 from typing import Any, Mapping
 
 from aiohttp.client import ClientError, ClientResponseError, ClientSession
@@ -47,9 +46,7 @@ class PureEnergie:
         """
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
 
-        version = metadata.version(__package__)
         headers = {
-            "User-Agent": f"PythonPureEnergie/{version}",
             "Accept": "application/json, text/plain, */*",
         }
 

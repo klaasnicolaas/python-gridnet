@@ -15,6 +15,42 @@ from . import load_fixtures
 
 
 @pytest.mark.asyncio
+async def test_json_request(aresponses):
+    """Test JSON response is handled correctly."""
+    aresponses.add(
+        "example.com",
+        "/test",
+        "GET",
+        aresponses.Response(
+            status=200,
+            headers={"Content-Type": "application/json"},
+            text='{"status": "ok"}',
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        pure_energie = PureEnergie("example.com", session=session)
+        await pure_energie.request("test")
+        await pure_energie.close()
+
+
+@pytest.mark.asyncio
+async def test_internal_session(aresponses):
+    """Test JSON response is handled correctly."""
+    aresponses.add(
+        "example.com",
+        "/test",
+        "GET",
+        aresponses.Response(
+            status=200,
+            headers={"Content-Type": "application/json"},
+            text='{"status": "ok"}',
+        ),
+    )
+    async with PureEnergie("example.com") as pure_energie:
+        await pure_energie.request("test")
+
+
+@pytest.mark.asyncio
 async def test_timeout(aresponses):
     """Test request timeout from Pure Energie."""
     # Faking a timeout by sleeping

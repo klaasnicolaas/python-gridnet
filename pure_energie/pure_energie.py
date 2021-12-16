@@ -3,11 +3,12 @@ from __future__ import annotations
 
 import asyncio
 import json
+import socket
 from dataclasses import dataclass
 from typing import Any, Mapping
 
-from aiohttp.client import ClientError, ClientResponseError, ClientSession
-from async_timeout import timeout
+import aiohttp
+import async_timeout
 from yarl import URL
 
 from .exceptions import PureEnergieMeterConnectionError
@@ -19,8 +20,8 @@ class PureEnergie:
     """Main class for handling connections with the Pure Energie Meter API."""
 
     host: str
-    request_timeout: int = 10
-    session: ClientSession | None = None
+    request_timeout: float = 10
+    session: aiohttp.client.ClientSession | None = None
 
     _close_session: bool = False
 
@@ -51,11 +52,11 @@ class PureEnergie:
         }
 
         if self.session is None:
-            self.session = ClientSession()
+            self.session = aiohttp.ClientSession()
             self._close_session = True
 
         try:
-            async with timeout(self.request_timeout):
+            with async_timeout.timeout(self.request_timeout):
                 response = await self.session.request(
                     "GET",
                     url,
@@ -67,7 +68,7 @@ class PureEnergie:
             raise PureEnergieMeterConnectionError(
                 "Timeout occurred while connecting to Pure Energie Meter device"
             ) from exception
-        except (ClientError, ClientResponseError) as exception:
+        except (aiohttp.ClientError, socket.gaierror) as exception:
             raise PureEnergieMeterConnectionError(
                 "Error occurred while communicating with the Pure Energie Meter device"
             ) from exception

@@ -5,10 +5,12 @@ import asyncio
 import json
 import socket
 from dataclasses import dataclass
-from typing import Any, Mapping
+from importlib import metadata
+from typing import Any
 
-import async_timeout
 from aiohttp.client import ClientError, ClientResponseError, ClientSession
+from aiohttp.hdrs import METH_GET
+from async_timeout import timeout
 from yarl import URL
 
 from .exceptions import PureEnergieMeterConnectionError
@@ -29,13 +31,15 @@ class PureEnergie:
         self,
         uri: str,
         *,
-        params: Mapping[str, str] | None = None,
+        method: str = METH_GET,
+        data: dict | None = None,
     ) -> dict[str, Any]:
         """Handle a request to a Pure Energie device.
 
         Args:
             uri: Request URI, without '/', for example, 'status'
-            params: Extra options to improve or limit the response.
+            method: HTTP Method to use.
+            data: Dictionary of data to send to the Pure Energie API.
 
         Returns:
             A Python dictionary (text) with the response from
@@ -45,9 +49,11 @@ class PureEnergie:
             PureEnergieMeterConnectionError: An error occurred while
                 communicating with the Pure Energie device.
         """
+        version = metadata.version(__package__)
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
 
         headers = {
+            "User-Agent": f"PythonPureEnergie/{version}",
             "Accept": "application/json, text/plain, */*",
         }
 
@@ -56,11 +62,11 @@ class PureEnergie:
             self._close_session = True
 
         try:
-            with async_timeout.timeout(self.request_timeout):
+            async with timeout(self.request_timeout):
                 response = await self.session.request(
-                    "GET",
+                    method,
                     url,
-                    params=params,
+                    json=data,
                     headers=headers,
                 )
                 response.raise_for_status()

@@ -22,7 +22,9 @@ async def main():
         print(device)
         print(f"ID: {device.pem_id}")
         print(f"Model: {device.model}")
-        print(f"Firmware: {device.firmware}")
+        print(f"Batch: {device.batch}")
+        print(f"Firmware version: {device.firmware}")
+        print(f"Hardware version: {device.hardware}")
         print(f"Manufacturer: {device.manufacturer}")
 
 

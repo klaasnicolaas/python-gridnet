@@ -60,7 +60,9 @@ You can read the following data with this package, the `power flow` entity can a
 
 - ID
 - Model
+- Batch
 - Firmware version
+- Hardware version
 - Manufacturer
 
 ### SmartMeter

@@ -3,10 +3,13 @@ from __future__ import annotations
 
 import asyncio
 import json
+import socket
 from dataclasses import dataclass
-from typing import Any, Mapping
+from importlib import metadata
+from typing import Any
 
 from aiohttp.client import ClientError, ClientResponseError, ClientSession
+from aiohttp.hdrs import METH_GET
 from async_timeout import timeout
 from yarl import URL
 
@@ -18,33 +21,25 @@ from .models import Device, SmartMeter
 class PureEnergie:
     """Main class for handling connections with the Pure Energie Meter API."""
 
-    def __init__(
-        self, host: str, request_timeout: int = 10, session: ClientSession | None = None
-    ) -> None:
-        """Initialize connection with the Pure Energie Meter API.
+    host: str
+    request_timeout: int = 10
+    session: ClientSession | None = None
 
-        Args:
-            host: Hostname or IP address of Pure Energie Meter device.
-            request_timeout: An integer with the request timeout in seconds.
-            session: Optional, shared, aiohttp client session.
-        """
-        self._session = session
-        self._close_session: bool = False
-
-        self.host = host
-        self.request_timeout = request_timeout
+    _close_session: bool = False
 
     async def request(
         self,
         uri: str,
         *,
-        params: Mapping[str, str] | None = None,
+        method: str = METH_GET,
+        data: dict | None = None,
     ) -> dict[str, Any]:
         """Handle a request to a Pure Energie device.
 
         Args:
             uri: Request URI, without '/', for example, 'status'
-            params: Extra options to improve or limit the response.
+            method: HTTP Method to use.
+            data: Dictionary of data to send to the Pure Energie API.
 
         Returns:
             A Python dictionary (text) with the response from
@@ -54,22 +49,24 @@ class PureEnergie:
             PureEnergieMeterConnectionError: An error occurred while
                 communicating with the Pure Energie device.
         """
+        version = metadata.version(__package__)
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
 
         headers = {
+            "User-Agent": f"PythonPureEnergie/{version}",
             "Accept": "application/json, text/plain, */*",
         }
 
-        if self._session is None:
-            self._session = ClientSession()
+        if self.session is None:
+            self.session = ClientSession()
             self._close_session = True
 
         try:
             async with timeout(self.request_timeout):
-                response = await self._session.request(
-                    "GET",
+                response = await self.session.request(
+                    method,
                     url,
-                    params=params,
+                    json=data,
                     headers=headers,
                 )
                 response.raise_for_status()
@@ -77,7 +74,11 @@ class PureEnergie:
             raise PureEnergieMeterConnectionError(
                 "Timeout occurred while connecting to Pure Energie Meter device"
             ) from exception
-        except (ClientError, ClientResponseError) as exception:
+        except (
+            ClientError,
+            ClientResponseError,
+            socket.gaierror,
+        ) as exception:
             raise PureEnergieMeterConnectionError(
                 "Error occurred while communicating with the Pure Energie Meter device"
             ) from exception
@@ -106,8 +107,8 @@ class PureEnergie:
 
     async def close(self) -> None:
         """Close open client session."""
-        if self._session and self._close_session:
-            await self._session.close()
+        if self.session and self._close_session:
+            await self.session.close()
 
     async def __aenter__(self) -> PureEnergie:
         """Async enter.

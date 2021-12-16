@@ -50,7 +50,9 @@ class Device:
 
     pem_id: str
     model: str
+    batch: str
     firmware: str
+    hardware: int
     manufacturer: str
 
     @staticmethod
@@ -67,6 +69,8 @@ class Device:
         return Device(
             pem_id=data.get("id"),
             model=data.get("model"),
+            batch=data.get("batch"),
             firmware=data.get("fw"),
+            hardware=data.get("hw"),
             manufacturer=data.get("mf"),
         )

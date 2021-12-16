@@ -26,7 +26,9 @@ async def test_device(aresponses):
         assert device
         assert device.pem_id == "84df:0c11:9999:3795"
         assert device.model == "SBWF3102"
+        assert device.batch == "SBP-HMX-210318"
         assert device.firmware == "1.6.16"
+        assert device.hardware == 1
         assert device.manufacturer == "NET2GRID"
 
 

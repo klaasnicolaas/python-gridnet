@@ -18,21 +18,11 @@ from .models import Device, SmartMeter
 class PureEnergie:
     """Main class for handling connections with the Pure Energie Meter API."""
 
-    def __init__(
-        self, host: str, request_timeout: int = 10, session: ClientSession | None = None
-    ) -> None:
-        """Initialize connection with the Pure Energie Meter API.
+    host: str
+    request_timeout: int = 10
+    session: ClientSession | None = None
 
-        Args:
-            host: Hostname or IP address of Pure Energie Meter device.
-            request_timeout: An integer with the request timeout in seconds.
-            session: Optional, shared, aiohttp client session.
-        """
-        self._session = session
-        self._close_session: bool = False
-
-        self.host = host
-        self.request_timeout = request_timeout
+    _close_session: bool = False
 
     async def request(
         self,
@@ -60,13 +50,13 @@ class PureEnergie:
             "Accept": "application/json, text/plain, */*",
         }
 
-        if self._session is None:
-            self._session = ClientSession()
+        if self.session is None:
+            self.session = ClientSession()
             self._close_session = True
 
         try:
             async with timeout(self.request_timeout):
-                response = await self._session.request(
+                response = await self.session.request(
                     "GET",
                     url,
                     params=params,
@@ -106,8 +96,8 @@ class PureEnergie:
 
     async def close(self) -> None:
         """Close open client session."""
-        if self._session and self._close_session:
-            await self._session.close()
+        if self.session and self._close_session:
+            await self.session.close()
 
     async def __aenter__(self) -> PureEnergie:
         """Async enter.

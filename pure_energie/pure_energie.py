@@ -8,9 +8,9 @@ from dataclasses import dataclass
 from importlib import metadata
 from typing import Any
 
+import async_timeout
 from aiohttp.client import ClientError, ClientResponseError, ClientSession
 from aiohttp.hdrs import METH_GET
-from async_timeout import timeout
 from yarl import URL
 
 from .exceptions import PureEnergieMeterConnectionError
@@ -62,7 +62,7 @@ class PureEnergie:
             self._close_session = True
 
         try:
-            async with timeout(self.request_timeout):
+            async with async_timeout.timeout(self.request_timeout):
                 response = await self.session.request(
                     method,
                     url,

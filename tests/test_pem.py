@@ -51,6 +51,21 @@ async def test_internal_session(aresponses):
 
 
 @pytest.mark.asyncio
+async def test_text_request(aresponses):
+    """Test non JSON response is handled correctly."""
+    aresponses.add(
+        "example.com",
+        "/test",
+        "GET",
+        aresponses.Response(status=200, text="OK"),
+    )
+    async with aiohttp.ClientSession() as session:
+        pure_energie = PureEnergie("example.com", session=session)
+        response = await pure_energie.request("test")
+        assert response == "OK"
+
+
+@pytest.mark.asyncio
 async def test_timeout(aresponses):
     """Test request timeout from Pure Energie."""
     # Faking a timeout by sleeping

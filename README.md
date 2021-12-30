@@ -163,7 +163,7 @@ SOFTWARE.
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-pem.svg
 [last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-pem.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
-[maintainability-shield]: https://api.codeclimate.com/v1/badges/443c476612a574d82467/maintainability
+[maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
 [maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-pem/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
 [pypi]: https://pypi.org/project/pure_energie/

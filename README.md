@@ -153,8 +153,8 @@ SOFTWARE.
 [code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-pem.svg?logo=lgtm&logoWidth=18
 [code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-pem/context:python
 [commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-pem.svg
-[commits-url]: https://github.com/klaasnicolaas/python-pem/commits/master
-[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-pem/branch/master/graph/badge.svg?token=VQTR24YFQ9
+[commits-url]: https://github.com/klaasnicolaas/python-pem/commits/main
+[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-pem/branch/main/graph/badge.svg?token=VQTR24YFQ9
 [codecov-url]: https://codecov.io/gh/klaasnicolaas/python-pem
 [forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-pem.svg
 [forks-url]: https://github.com/klaasnicolaas/python-pem/network/members

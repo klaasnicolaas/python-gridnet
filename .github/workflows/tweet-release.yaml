@@ -16,7 +16,7 @@ jobs:
           # GitHub event payload
           # https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#release
           tweet-message: |
-            ⬆️ ${{ github.event.release.tag_name }} of ${{ github.event.repository.name }} just released 🎉 #update @klaasnicolaas #python #package #pure_energie #release #bot #assistant
+            ⬆️ ${{ github.event.release.tag_name }} of ${{ github.event.repository.name }} just released 🎉 #update @klaasnicolaas #python #package #net2grid #energy #release #bot #assistant
 
             Check out the release notes here: ${{ github.event.release.html_url }}
         env:

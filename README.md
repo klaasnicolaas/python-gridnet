@@ -1,4 +1,4 @@
-## Python - PEM Client
+## Python - NET2GRID Client
 
 <!-- PROJECT SHIELDS -->
 [![GitHub Release][releases-shield]][releases]
@@ -18,16 +18,20 @@
 [![Code Coverage][codecov-shield]][codecov-url]
 [![Build Status][build-shield]][build-url]
 
-Asynchronous Python client for the Pure Energie Meter device.
+Asynchronous Python client for NET2GRID devices.
 
 ## About
 
-A python package with which you can read the data from your [Pure Energie Meter][pem] device via a local API, made by the company [Pure Energie][pure-energie]. With this device you can read your smart meter via the P1 serial port.
+A python package with which you can read the data from a [NET2GRID][net2grid] device via a local API. NET2GRID supplies energy hardware to brands, that can market it as a white label product.
+
+## Supported SmartBridges
+
+- SBWF3102 ([Pure Energie][pure-energie])
 
 ## Installation
 
 ```bash
-pip install pure-energie
+pip install net2grid
 ```
 
 ## Usage
@@ -35,11 +39,11 @@ pip install pure-energie
 ```py
 import asyncio
 
-from pure_energie import PureEnergie
+from net2grid import Net2Grid
 
 async def main():
-    """Show example on getting data from your Pure Energie device."""
-    async with PureEnergie(
+    """Show example on getting data from your NET2GRID device."""
+    async with Net2Grid(
         host="example.com",
     ) as client:
         device = await client.device()
@@ -142,33 +146,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [pure-energie]: https://pure-energie.nl
-[pem]: https://pure-energie.nl/kennisbank/pure-energie-meter
+[net2grid]: https://www.net2grid.com
 [poetry-install]: https://python-poetry.org/docs/#installation
 [poetry]: https://python-poetry.org
 [pre-commit]: https://pre-commit.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[build-shield]: https://github.com/klaasnicolaas/python-pem/actions/workflows/tests.yaml/badge.svg
-[build-url]: https://github.com/klaasnicolaas/python-pem/actions/workflows/tests.yaml
-[code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-pem.svg?logo=lgtm&logoWidth=18
-[code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-pem/context:python
-[commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-pem.svg
-[commits-url]: https://github.com/klaasnicolaas/python-pem/commits/main
-[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-pem/branch/main/graph/badge.svg?token=VQTR24YFQ9
-[codecov-url]: https://codecov.io/gh/klaasnicolaas/python-pem
-[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-pem.svg
-[forks-url]: https://github.com/klaasnicolaas/python-pem/network/members
-[issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-pem.svg
-[issues-url]: https://github.com/klaasnicolaas/python-pem/issues
-[license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-pem.svg
-[last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-pem.svg
+[build-shield]: https://github.com/klaasnicolaas/python-net2grid/actions/workflows/tests.yaml/badge.svg
+[build-url]: https://github.com/klaasnicolaas/python-net2grid/actions/workflows/tests.yaml
+[code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-net2grid.svg?logo=lgtm&logoWidth=18
+[code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-net2grid/context:python
+[commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-net2grid.svg
+[commits-url]: https://github.com/klaasnicolaas/python-net2grid/commits/main
+[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-net2grid/branch/main/graph/badge.svg?token=VQTR24YFQ9
+[codecov-url]: https://codecov.io/gh/klaasnicolaas/python-net2grid
+[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-net2grid.svg
+[forks-url]: https://github.com/klaasnicolaas/python-net2grid/network/members
+[issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-net2grid.svg
+[issues-url]: https://github.com/klaasnicolaas/python-net2grid/issues
+[license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-net2grid.svg
+[last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-net2grid.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
 [maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
-[maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-pem/maintainability
+[maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-net2grid/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[pypi]: https://pypi.org/project/pure_energie/
-[python-versions-shield]: https://img.shields.io/pypi/pyversions/pure_energie
-[releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-pem.svg
-[releases]: https://github.com/klaasnicolaas/python-pem/releases
-[stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-pem.svg
-[stars-url]: https://github.com/klaasnicolaas/python-pem/stargazers
+[pypi]: https://pypi.org/project/net2grid/
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/net2grid
+[releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-net2grid.svg
+[releases]: https://github.com/klaasnicolaas/python-net2grid/releases
+[stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-net2grid.svg
+[stars-url]: https://github.com/klaasnicolaas/python-net2grid/stargazers

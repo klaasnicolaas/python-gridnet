@@ -1,15 +1,12 @@
-"""Basic tests for the Pure Energie device."""
+"""Basic tests for the NET2GRID device."""
 import asyncio
 from unittest.mock import patch
 
 import aiohttp
 import pytest
 
-from pure_energie import PureEnergie
-from pure_energie.exceptions import (
-    PureEnergieMeterConnectionError,
-    PureEnergieMeterError,
-)
+from net2grid import Net2Grid
+from net2grid.exceptions import Net2GridConnectionError, Net2GridError
 
 from . import load_fixtures
 
@@ -28,9 +25,9 @@ async def test_json_request(aresponses):
         ),
     )
     async with aiohttp.ClientSession() as session:
-        pure_energie = PureEnergie("example.com", session=session)
-        await pure_energie.request("test")
-        await pure_energie.close()
+        net2grid = Net2Grid("example.com", session=session)
+        await net2grid.request("test")
+        await net2grid.close()
 
 
 @pytest.mark.asyncio
@@ -46,8 +43,8 @@ async def test_internal_session(aresponses):
             text='{"status": "ok"}',
         ),
     )
-    async with PureEnergie("example.com") as pure_energie:
-        await pure_energie.request("test")
+    async with Net2Grid("example.com") as net2grid:
+        await net2grid.request("test")
 
 
 @pytest.mark.asyncio
@@ -60,14 +57,14 @@ async def test_text_request(aresponses):
         aresponses.Response(status=200, text="OK"),
     )
     async with aiohttp.ClientSession() as session:
-        pure_energie = PureEnergie("example.com", session=session)
-        response = await pure_energie.request("test")
+        net2grid = Net2Grid("example.com", session=session)
+        response = await net2grid.request("test")
         assert response == "OK"
 
 
 @pytest.mark.asyncio
 async def test_timeout(aresponses):
-    """Test request timeout from Pure Energie."""
+    """Test request timeout from NET2GRID."""
     # Faking a timeout by sleeping
     async def response_handler(_):
         await asyncio.sleep(0.2)
@@ -78,19 +75,19 @@ async def test_timeout(aresponses):
     aresponses.add("example.com", "/meter/now", "GET", response_handler)
 
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session, request_timeout=0.1)
-        with pytest.raises(PureEnergieMeterConnectionError):
+        client = Net2Grid(host="example.com", session=session, request_timeout=0.1)
+        with pytest.raises(Net2GridConnectionError):
             assert await client.smartmeter()
 
 
 @pytest.mark.asyncio
 async def test_client_error():
-    """Test request client error from Pure Energie."""
+    """Test request client error from NET2GRID."""
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session)
+        client = Net2Grid(host="example.com", session=session)
         with patch.object(
             session, "request", side_effect=aiohttp.ClientError
-        ), pytest.raises(PureEnergieMeterConnectionError):
+        ), pytest.raises(Net2GridConnectionError):
             assert await client.request("test")
 
 
@@ -106,8 +103,8 @@ async def test_http_error401(aresponses, status):
     )
 
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session)
-        with pytest.raises(PureEnergieMeterError):
+        client = Net2Grid(host="example.com", session=session)
+        with pytest.raises(Net2GridError):
             assert await client.request("test")
 
 
@@ -122,8 +119,8 @@ async def test_http_error400(aresponses):
     )
 
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session)
-        with pytest.raises(PureEnergieMeterError):
+        client = Net2Grid(host="example.com", session=session)
+        with pytest.raises(Net2GridError):
             assert await client.request("test")
 
 
@@ -141,8 +138,8 @@ async def test_http_error500(aresponses):
     )
 
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session)
-        with pytest.raises(PureEnergieMeterError):
+        client = Net2Grid(host="example.com", session=session)
+        with pytest.raises(Net2GridError):
             assert await client.request("test")
 
 
@@ -160,6 +157,6 @@ async def test_no_success(aresponses):
     )
 
     async with aiohttp.ClientSession() as session:
-        client = PureEnergie(host="example.com", session=session)
-        with pytest.raises(PureEnergieMeterError):
+        client = Net2Grid(host="example.com", session=session)
+        with pytest.raises(Net2GridError):
             assert await client.request("test")

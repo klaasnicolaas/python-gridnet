@@ -1,4 +1,4 @@
-"""Models for Pure Energie Meter."""
+"""Models for NET2GRID."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -7,7 +7,7 @@ from typing import Any
 
 @dataclass
 class SmartMeter:
-    """Object representing an SmartMeter response from Pure Energie Meter."""
+    """Object representing an SmartMeter response from a NET2GRID device."""
 
     power_flow: int
     energy_consumption_total: float
@@ -15,10 +15,10 @@ class SmartMeter:
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> SmartMeter:
-        """Return SmartMeter object from the Pure Energie Meter API response.
+        """Return SmartMeter object from the NET2GRID API response.
 
         Args:
-            data: The data from the Pure Energie Meter API.
+            data: The data from the NET2GRID API.
 
         Returns:
             A SmartMeter object.
@@ -46,9 +46,9 @@ class SmartMeter:
 
 @dataclass
 class Device:
-    """Object representing an Device response from Pure Energie Meter."""
+    """Object representing an Device response from NET2GRID device."""
 
-    pem_id: str
+    n2g_id: str
     model: str
     batch: str
     firmware: str
@@ -57,17 +57,17 @@ class Device:
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> Device:
-        """Return Device object from the Pure Energie Meter API response.
+        """Return Device object from the NET2GRID API response.
 
         Args:
-            data: The data from the Pure Energie Meter API.
+            data: The data from the NET2GRID API.
 
         Returns:
             A Device object.
         """
 
         return Device(
-            pem_id=data.get("id"),
+            n2g_id=data.get("id"),
             model=data.get("model"),
             batch=data.get("batch"),
             firmware=data.get("fw"),

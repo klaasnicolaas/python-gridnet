@@ -1,4 +1,4 @@
-"""Asynchronous Python client for the Pure Energie device."""
+"""Asynchronous Python client for the NET2GRID device."""
 import os
 
 

@@ -1,4 +1,4 @@
-## Python - NET2GRID Client
+## Python - Net2Grid Client
 
 <!-- PROJECT SHIELDS -->
 [![GitHub Release][releases-shield]][releases]
@@ -18,11 +18,11 @@
 [![Code Coverage][codecov-shield]][codecov-url]
 [![Build Status][build-shield]][build-url]
 
-Asynchronous Python client for NET2GRID devices.
+Asynchronous Python client for Net2Grid devices.
 
 ## About
 
-A python package with which you can read the data from a [NET2GRID][net2grid] device via a local API. NET2GRID supplies energy hardware to brands, that can market it as a white label product.
+A python package with which you can read the data from a [NET2GRID][net2grid] device via a local api. Net2Grid supplies energy hardware to brands, that can market it as a white label product.
 
 ## Supported SmartBridges
 
@@ -125,7 +125,7 @@ poetry run pytest
 
 MIT License
 
-Copyright (c) 2021 Klaas Schoute
+Copyright (c) 2021-2022 Klaas Schoute
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -166,7 +166,7 @@ SOFTWARE.
 [issues-url]: https://github.com/klaasnicolaas/python-net2grid/issues
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-net2grid.svg
 [last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-net2grid.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2021.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
 [maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
 [maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-net2grid/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg

@@ -158,7 +158,7 @@ SOFTWARE.
 [code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-net2grid/context:python
 [commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-net2grid.svg
 [commits-url]: https://github.com/klaasnicolaas/python-net2grid/commits/main
-[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-net2grid/branch/main/graph/badge.svg?token=VQTR24YFQ9
+[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-net2grid/branch/main/graph/badge.svg?token=CXCSJBsRPE
 [codecov-url]: https://codecov.io/gh/klaasnicolaas/python-net2grid
 [forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-net2grid.svg
 [forks-url]: https://github.com/klaasnicolaas/python-net2grid/network/members

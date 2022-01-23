@@ -2,7 +2,7 @@
 import aiohttp
 import pytest
 
-from net2grid import Device, Net2Grid, SmartMeter
+from net2grid import Device, Net2Grid, SmartBridge
 
 from . import load_fixtures
 
@@ -33,22 +33,22 @@ async def test_device(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_smartmeter(aresponses):
-    """Test request from a NET2GRID device - SmartMeter object."""
+async def test_smartbridge(aresponses):
+    """Test request from a NET2GRID device - SmartBridge object."""
     aresponses.add(
         "example.com",
         "/meter/now",
         "GET",
         aresponses.Response(
-            text=load_fixtures("smartmeter.json"),
+            text=load_fixtures("smartbridge.json"),
             status=200,
         ),
     )
 
     async with aiohttp.ClientSession() as session:
         client = Net2Grid(host="example.com", session=session)
-        smartmeter: SmartMeter = await client.smartmeter()
-        assert smartmeter
-        assert smartmeter.power_flow == 338
-        assert smartmeter.energy_consumption_total == 17762.1
-        assert smartmeter.energy_production_total == 21214.6
+        smartbridge: SmartBridge = await client.smartbridge()
+        assert smartbridge
+        assert smartbridge.power_flow == 338
+        assert smartbridge.energy_consumption_total == 17762.1
+        assert smartbridge.energy_production_total == 21214.6

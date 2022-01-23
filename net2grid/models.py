@@ -6,22 +6,22 @@ from typing import Any
 
 
 @dataclass
-class SmartMeter:
-    """Object representing an SmartMeter response from a NET2GRID device."""
+class SmartBridge:
+    """Object representing an SmartBridge response from a NET2GRID device."""
 
     power_flow: int
     energy_consumption_total: float
     energy_production_total: float
 
     @staticmethod
-    def from_dict(data: dict[str, Any]) -> SmartMeter:
-        """Return SmartMeter object from the NET2GRID API response.
+    def from_dict(data: dict[str, Any]) -> SmartBridge:
+        """Return SmartBridge object from the NET2GRID API response.
 
         Args:
             data: The data from the NET2GRID API.
 
         Returns:
-            A SmartMeter object.
+            A SmartBridge object.
         """
         data = data["elec"]
 
@@ -37,7 +37,7 @@ class SmartMeter:
             value = value / 1000
             return round(value, 1)
 
-        return SmartMeter(
+        return SmartBridge(
             power_flow=data["power"]["now"].get("value"),
             energy_consumption_total=convert(data["import"]["now"].get("value")),
             energy_production_total=convert(data["export"]["now"].get("value")),

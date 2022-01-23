@@ -3,7 +3,7 @@
 
 import asyncio
 
-from net2grid import Device, Net2Grid, SmartMeter
+from net2grid import Device, Net2Grid, SmartBridge
 
 
 async def main():
@@ -11,13 +11,13 @@ async def main():
     async with Net2Grid(
         host="example.com",
     ) as net2grid:
-        smartmeter: SmartMeter = await net2grid.smartmeter()
+        smartbridge: SmartBridge = await net2grid.smartbridge()
         device: Device = await net2grid.device()
-        print(smartmeter)
+        print(smartbridge)
         print()
-        print(f"Power flow: {smartmeter.power_flow}")
-        print(f"Energy consumption: {smartmeter.energy_consumption_total}")
-        print(f"Energy production: {smartmeter.energy_production_total}")
+        print(f"Power flow: {smartbridge.power_flow}")
+        print(f"Energy consumption: {smartbridge.energy_consumption_total}")
+        print(f"Energy production: {smartbridge.energy_production_total}")
         print()
         print(device)
         print(f"ID: {device.n2g_id}")

@@ -47,9 +47,9 @@ async def main():
         host="example.com",
     ) as client:
         device = await client.device()
-        smartmeter = await client.smartmeter()
+        smartbridge = await client.smartbridge()
         print(device)
-        print(smartmeter)
+        print(smartbridge)
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
@@ -69,7 +69,7 @@ You can read the following data with this package, the `power flow` entity can a
 - Hardware version
 - Manufacturer
 
-### SmartMeter
+### SmartBridge
 
 - Power Flow (W)
 - Energy Consumption (kWh)

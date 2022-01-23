@@ -69,7 +69,7 @@ async def test_timeout(aresponses):
     async def response_handler(_):
         await asyncio.sleep(0.2)
         return aresponses.Response(
-            body="Goodmorning!", text=load_fixtures("smartmeter.json")
+            body="Goodmorning!", text=load_fixtures("smartbridge.json")
         )
 
     aresponses.add("example.com", "/meter/now", "GET", response_handler)
@@ -77,7 +77,7 @@ async def test_timeout(aresponses):
     async with aiohttp.ClientSession() as session:
         client = Net2Grid(host="example.com", session=session, request_timeout=0.1)
         with pytest.raises(Net2GridConnectionError):
-            assert await client.smartmeter()
+            assert await client.smartbridge()
 
 
 @pytest.mark.asyncio

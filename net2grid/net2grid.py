@@ -14,7 +14,7 @@ from aiohttp.hdrs import METH_GET
 from yarl import URL
 
 from .exceptions import Net2GridConnectionError
-from .models import Device, SmartMeter
+from .models import Device, SmartBridge
 
 
 @dataclass
@@ -95,15 +95,15 @@ class Net2Grid:
         data = json.loads(data)
         return Device.from_dict(data)
 
-    async def smartmeter(self) -> SmartMeter:
+    async def smartbridge(self) -> SmartBridge:
         """Get the latest values from a NET2GRID device.
 
         Returns:
-            A SmartMeter data object from the API.
+            A SmartBridge data object from the API.
         """
         data = await self.request("meter/now")
         data = json.loads(data)
-        return SmartMeter.from_dict(data)
+        return SmartBridge.from_dict(data)
 
     async def close(self) -> None:
         """Close open client session."""

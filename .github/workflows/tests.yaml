@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
-        os: [ubuntu, windows, macos]
+        os: [ubuntu, macos]
         python: ['3.9', '3.10']
     steps:
       - name: ⤵️ Check out code from GitHub
@@ -33,7 +33,7 @@ jobs:
             pip-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install workflow dependencies
         run: |
-          pip install -r .github/workflows/requirements.txt
+          pip install -r .github/workflows/requirements.txt --user
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project true
       - name: ⤵️ Restore cached Python virtual environment

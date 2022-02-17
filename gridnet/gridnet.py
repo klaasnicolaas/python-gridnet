@@ -13,13 +13,13 @@ from aiohttp.client import ClientError, ClientResponseError, ClientSession
 from aiohttp.hdrs import METH_GET
 from yarl import URL
 
-from .exceptions import Net2GridConnectionError
+from .exceptions import GridNetConnectionError
 from .models import Device, SmartBridge
 
 
 @dataclass
-class Net2Grid:
-    """Main class for handling connections with the NET2GRID devices."""
+class GridNet:
+    """Main class for handling connections with the devices."""
 
     host: str
     request_timeout: int = 10
@@ -34,26 +34,26 @@ class Net2Grid:
         method: str = METH_GET,
         data: dict | None = None,
     ) -> dict[str, Any]:
-        """Handle a request to a NET2GRID device.
+        """Handle a request to the device.
 
         Args:
             uri: Request URI, without '/', for example, 'status'
             method: HTTP Method to use.
-            data: Dictionary of data to send to the NET2GRID API.
+            data: Dictionary of data to send to the API.
 
         Returns:
             A Python dictionary (text) with the response from
-            a NET2GRID device.
+            a device.
 
         Raises:
-            Net2GridConnectionError: An error occurred while
-                communicating with the NET2GRID device.
+            GridNetConnectionError: An error occurred while
+                communicating with the device.
         """
         version = metadata.version(__package__)
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
 
         headers = {
-            "User-Agent": f"PythonNet2Grid/{version}",
+            "User-Agent": f"PythonGridNet/{version}",
             "Accept": "application/json, text/plain, */*",
         }
 
@@ -71,22 +71,22 @@ class Net2Grid:
                 )
                 response.raise_for_status()
         except asyncio.TimeoutError as exception:
-            raise Net2GridConnectionError(
-                "Timeout occurred while connecting to the NET2GRID device"
+            raise GridNetConnectionError(
+                "Timeout occurred while connecting to the device"
             ) from exception
         except (
             ClientError,
             ClientResponseError,
             socket.gaierror,
         ) as exception:
-            raise Net2GridConnectionError(
-                "Error occurred while communicating with the NET2GRID device"
+            raise GridNetConnectionError(
+                "Error occurred while communicating with the device"
             ) from exception
 
         return await response.text()
 
     async def device(self) -> Device:
-        """Get the latest values from a NET2GRID device.
+        """Get the latest values from a the device.
 
         Returns:
             A Device data object from the API.
@@ -96,7 +96,7 @@ class Net2Grid:
         return Device.from_dict(data)
 
     async def smartbridge(self) -> SmartBridge:
-        """Get the latest values from a NET2GRID device.
+        """Get the latest values from a the device.
 
         Returns:
             A SmartBridge data object from the API.
@@ -110,11 +110,11 @@ class Net2Grid:
         if self.session and self._close_session:
             await self.session.close()
 
-    async def __aenter__(self) -> Net2Grid:
+    async def __aenter__(self) -> GridNet:
         """Async enter.
 
         Returns:
-            The NET2GRID object.
+            The GridNet object.
         """
         return self
 

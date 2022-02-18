@@ -28,9 +28,9 @@ jobs:
         uses: actions/cache@v2.1.7
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: pip-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-${{ hashFiles('.github/workflows/requirements.txt') }}
+          key: pip-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-${{ hashFiles('.github/workflows/requirements.txt') }}
           restore-keys: |
-            pip-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-
+            pip-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install workflow dependencies
         run: |
           pip install -r .github/workflows/requirements.txt
@@ -41,9 +41,9 @@ jobs:
         uses: actions/cache@v2.1.7
         with:
           path: .venv
-          key: venv-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
+          key: venv-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
           restore-keys: |
-            venv-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-
+            venv-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Run pytest
@@ -75,9 +75,9 @@ jobs:
         uses: actions/cache@v2.1.7
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: pip-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-${{ hashFiles('.github/workflows/requirements.txt') }}
+          key: pip-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-${{ hashFiles('.github/workflows/requirements.txt') }}
           restore-keys: |
-            pip-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-
+            pip-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install workflow dependencies
         run: |
           pip install -r .github/workflows/requirements.txt
@@ -89,8 +89,8 @@ jobs:
         with:
           path: .venv
           key: >-
-            venv-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
-            venv-${{ runner.os }}-v2-${{ steps.python.outputs.python-version }}-
+            venv-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-${{ hashFiles('poetry.lock') }}
+            venv-${{ runner.os }}-v3-${{ steps.python.outputs.python-version }}-
       - name: 🏗 Install dependencies
         run: poetry install --no-interaction
       - name: 🚀 Process coverage results

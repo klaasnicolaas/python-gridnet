@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "net2grid"
+name = "gridnet"
 version = "0.0.0"
-description = "Asynchronous Python client for the NET2GRID devices"
+description = "Asynchronous Python client for a NET2GRID devices"
 authors = ["Klaas Schoute <hello@student-techlife.com>"]
 maintainers = ["Klaas Schoute <hello@student-techlife.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/klaasnicolaas/python-net2grid"
-repository = "https://github.com/klaasnicolaas/python-net2grid"
-documentation = "https://github.com/klaasnicolaas/python-net2grid"
+homepage = "https://github.com/klaasnicolaas/python-gridnet"
+repository = "https://github.com/klaasnicolaas/python-gridnet"
+documentation = "https://github.com/klaasnicolaas/python-gridnet"
 keywords = ["net2grid", "energy", "device", "power", "async", "client"]
 classifiers = [
     "Framework :: AsyncIO",
@@ -21,7 +21,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 packages = [
-    { include = "net2grid" },
+    { include = "gridnet" },
 ]
 
 [tool.poetry.dependencies]
@@ -59,14 +59,14 @@ codespell = "^2.1.0"
 bandit = "^1.7.2"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/klaasnicolaas/python-net2grid/issues"
-Changelog = "https://github.com/klaasnicolaas/python-net2grid/releases"
+"Bug Tracker" = "https://github.com/klaasnicolaas/python-gridnet/issues"
+Changelog = "https://github.com/klaasnicolaas/python-gridnet/releases"
 
 [tool.black]
 target-version = ['py39']
 
 [tool.coverage.paths]
-source = ["net2grid"]
+source = ["gridnet"]
 
 [tool.coverage.report]
 show_missing = true
@@ -74,7 +74,7 @@ exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
 
 [tool.coverage.run]
 branch = true
-source = ["net2grid"]
+source = ["gridnet"]
 
 [tool.isort]
 profile = "black"
@@ -116,7 +116,7 @@ addopts = "--cov"
 
 [tool.vulture]
 min_confidence = 80
-paths = ["net2grid"]
+paths = ["gridnet"]
 verbose = true
 
 [build-system]

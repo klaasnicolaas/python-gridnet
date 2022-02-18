@@ -1,4 +1,4 @@
-"""Models for NET2GRID."""
+"""Models for GridNet."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -7,7 +7,7 @@ from typing import Any
 
 @dataclass
 class SmartBridge:
-    """Object representing an SmartBridge response from a NET2GRID device."""
+    """Object representing an SmartBridge response from the device."""
 
     power_flow: int
     energy_consumption_total: float
@@ -15,10 +15,10 @@ class SmartBridge:
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> SmartBridge:
-        """Return SmartBridge object from the NET2GRID API response.
+        """Return SmartBridge object from the API response.
 
         Args:
-            data: The data from the NET2GRID API.
+            data: Response data from the API.
 
         Returns:
             A SmartBridge object.
@@ -46,7 +46,7 @@ class SmartBridge:
 
 @dataclass
 class Device:
-    """Object representing an Device response from NET2GRID device."""
+    """Object representing an Device response from the device."""
 
     n2g_id: str
     model: str
@@ -57,10 +57,10 @@ class Device:
 
     @staticmethod
     def from_dict(data: dict[str, Any]) -> Device:
-        """Return Device object from the NET2GRID API response.
+        """Return Device object from the API response.
 
         Args:
-            data: The data from the NET2GRID API.
+            data: Response data from the API.
 
         Returns:
             A Device object.

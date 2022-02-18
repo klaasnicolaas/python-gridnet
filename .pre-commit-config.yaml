@@ -7,7 +7,7 @@ repos:
         language: system
         types: [python]
         entry: poetry run bandit
-        files: ^net2grid/
+        files: ^gridnet/
         require_serial: true
       - id: black
         name: ☕️ Format using black

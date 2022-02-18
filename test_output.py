@@ -1,18 +1,18 @@
 # pylint: disable=W0621
-"""Asynchronous Python client for the NET2GRID API."""
+"""Asynchronous Python client for a NET2GRID device."""
 
 import asyncio
 
-from net2grid import Device, Net2Grid, SmartBridge
+from gridnet import Device, GridNet, SmartBridge
 
 
 async def main():
     """Test."""
-    async with Net2Grid(
+    async with GridNet(
         host="example.com",
-    ) as net2grid:
-        smartbridge: SmartBridge = await net2grid.smartbridge()
-        device: Device = await net2grid.device()
+    ) as gridnet:
+        smartbridge: SmartBridge = await gridnet.smartbridge()
+        device: Device = await gridnet.device()
         print(smartbridge)
         print()
         print(f"Power flow: {smartbridge.power_flow}")

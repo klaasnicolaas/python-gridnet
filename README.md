@@ -31,7 +31,7 @@ A python package with which you can read the data from a [NET2GRID][net2grid] de
 ## Installation
 
 ```bash
-pip install net2grid
+pip install gridnet
 ```
 
 ## Usage
@@ -39,11 +39,11 @@ pip install net2grid
 ```py
 import asyncio
 
-from net2grid import Net2Grid
+from gridnet import GridNet
 
 async def main():
-    """Show example on getting data from your NET2GRID device."""
-    async with Net2Grid(
+    """Show example on getting data from your device."""
+    async with GridNet(
         host="example.com",
     ) as client:
         device = await client.device()
@@ -121,6 +121,10 @@ To run just the Python tests:
 poetry run pytest
 ```
 
+## Trademark Legal Notices
+
+All product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
+
 ## License
 
 MIT License
@@ -152,27 +156,27 @@ SOFTWARE.
 [pre-commit]: https://pre-commit.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[build-shield]: https://github.com/klaasnicolaas/python-net2grid/actions/workflows/tests.yaml/badge.svg
-[build-url]: https://github.com/klaasnicolaas/python-net2grid/actions/workflows/tests.yaml
-[code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-net2grid.svg?logo=lgtm&logoWidth=18
-[code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-net2grid/context:python
-[commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-net2grid.svg
-[commits-url]: https://github.com/klaasnicolaas/python-net2grid/commits/main
-[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-net2grid/branch/main/graph/badge.svg?token=CXCSJBsRPE
-[codecov-url]: https://codecov.io/gh/klaasnicolaas/python-net2grid
-[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-net2grid.svg
-[forks-url]: https://github.com/klaasnicolaas/python-net2grid/network/members
-[issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-net2grid.svg
-[issues-url]: https://github.com/klaasnicolaas/python-net2grid/issues
-[license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-net2grid.svg
-[last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-net2grid.svg
+[build-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml/badge.svg
+[build-url]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml
+[code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-gridnet.svg?logo=lgtm&logoWidth=18
+[code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-gridnet/context:python
+[commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-gridnet.svg
+[commits-url]: https://github.com/klaasnicolaas/python-gridnet/commits/main
+[codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-gridnet/branch/main/graph/badge.svg?token=CXCSJBsRPE
+[codecov-url]: https://codecov.io/gh/klaasnicolaas/python-gridnet
+[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-gridnet.svg
+[forks-url]: https://github.com/klaasnicolaas/python-gridnet/network/members
+[issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-gridnet.svg
+[issues-url]: https://github.com/klaasnicolaas/python-gridnet/issues
+[license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg
+[last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-gridnet.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2022.svg
 [maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
-[maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-net2grid/maintainability
+[maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-gridnet/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[pypi]: https://pypi.org/project/net2grid/
-[python-versions-shield]: https://img.shields.io/pypi/pyversions/net2grid
-[releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-net2grid.svg
-[releases]: https://github.com/klaasnicolaas/python-net2grid/releases
-[stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-net2grid.svg
-[stars-url]: https://github.com/klaasnicolaas/python-net2grid/stargazers
+[pypi]: https://pypi.org/project/gridnet/
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/gridnet
+[releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-gridnet.svg
+[releases]: https://github.com/klaasnicolaas/python-gridnet/releases
+[stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-gridnet.svg
+[stars-url]: https://github.com/klaasnicolaas/python-gridnet/stargazers

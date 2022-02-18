@@ -1,4 +1,4 @@
-"""Asynchronous Python client for the NET2GRID device."""
+"""Asynchronous Python client for NET2GRID devices."""
 import os
 
 

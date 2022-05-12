@@ -8,9 +8,9 @@ from dataclasses import dataclass
 from importlib import metadata
 from typing import Any
 
+import aiohttp
 import async_timeout
-from aiohttp.client import ClientError, ClientResponseError, ClientSession
-from aiohttp.hdrs import METH_GET
+from aiohttp import hdrs
 from yarl import URL
 
 from .exceptions import GridNetConnectionError
@@ -23,15 +23,15 @@ class GridNet:
 
     host: str
     request_timeout: int = 10
-    session: ClientSession | None = None
+    session: aiohttp.ClientSession | None = None
 
     _close_session: bool = False
 
-    async def request(
+    async def _request(
         self,
         uri: str,
         *,
-        method: str = METH_GET,
+        method: str = hdrs.METH_GET,
         data: dict | None = None,
     ) -> dict[str, Any]:
         """Handle a request to the device.
@@ -58,7 +58,7 @@ class GridNet:
         }
 
         if self.session is None:
-            self.session = ClientSession()
+            self.session = aiohttp.ClientSession()
             self._close_session = True
 
         try:
@@ -75,15 +75,14 @@ class GridNet:
                 "Timeout occurred while connecting to the device"
             ) from exception
         except (
-            ClientError,
-            ClientResponseError,
+            aiohttp.ClientError,
             socket.gaierror,
         ) as exception:
             raise GridNetConnectionError(
                 "Error occurred while communicating with the device"
             ) from exception
 
-        return await response.text()
+        return json.loads(await response.text())
 
     async def device(self) -> Device:
         """Get the latest values from a the device.
@@ -91,8 +90,7 @@ class GridNet:
         Returns:
             A Device data object from the API.
         """
-        data = await self.request("info")
-        data = json.loads(data)
+        data = await self._request("info")
         return Device.from_dict(data)
 
     async def smartbridge(self) -> SmartBridge:
@@ -101,8 +99,7 @@ class GridNet:
         Returns:
             A SmartBridge data object from the API.
         """
-        data = await self.request("meter/now")
-        data = json.loads(data)
+        data = await self._request("meter/now")
         return SmartBridge.from_dict(data)
 
     async def close(self) -> None:

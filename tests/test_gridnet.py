@@ -5,6 +5,7 @@ from unittest.mock import patch
 
 import aiohttp
 import pytest
+from aresponses import Response, ResponsesMockServer
 
 from gridnet import GridNet
 from gridnet.exceptions import GridNetConnectionError, GridNetError
@@ -13,7 +14,7 @@ from . import load_fixtures
 
 
 @pytest.mark.asyncio
-async def test_json_request(aresponses):
+async def test_json_request(aresponses: ResponsesMockServer) -> None:
     """Test JSON response is handled correctly."""
     aresponses.add(
         "example.com",
@@ -32,7 +33,7 @@ async def test_json_request(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_internal_session(aresponses):
+async def test_internal_session(aresponses: ResponsesMockServer) -> None:
     """Test JSON response is handled correctly."""
     aresponses.add(
         "example.com",
@@ -49,10 +50,10 @@ async def test_internal_session(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_timeout(aresponses):
+async def test_timeout(aresponses: ResponsesMockServer) -> None:
     """Test request timeout from the API."""
     # Faking a timeout by sleeping
-    async def response_handler(_):
+    async def response_handler(_: aiohttp.ClientResponse) -> Response:
         await asyncio.sleep(0.2)
         return aresponses.Response(
             body="Goodmorning!", text=load_fixtures("smartbridge.json")
@@ -67,7 +68,7 @@ async def test_timeout(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_client_error():
+async def test_client_error() -> None:
     """Test request client error from the API."""
     async with aiohttp.ClientSession() as session:
         client = GridNet(host="example.com", session=session)
@@ -79,7 +80,7 @@ async def test_client_error():
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("status", [401, 403])
-async def test_http_error401(aresponses, status):
+async def test_http_error401(aresponses: ResponsesMockServer, status: int) -> None:
     """Test HTTP 401 response handling."""
     aresponses.add(
         "example.com",
@@ -95,7 +96,7 @@ async def test_http_error401(aresponses, status):
 
 
 @pytest.mark.asyncio
-async def test_http_error400(aresponses):
+async def test_http_error400(aresponses: ResponsesMockServer) -> None:
     """Test HTTP 404 response handling."""
     aresponses.add(
         "example.com",
@@ -111,7 +112,7 @@ async def test_http_error400(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_http_error500(aresponses):
+async def test_http_error500(aresponses: ResponsesMockServer) -> None:
     """Test HTTP 500 response handling."""
     aresponses.add(
         "example.com",
@@ -130,7 +131,7 @@ async def test_http_error500(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_no_success(aresponses):
+async def test_no_success(aresponses: ResponsesMockServer) -> None:
     """Test a message without a success message throws."""
     aresponses.add(
         "example.com",

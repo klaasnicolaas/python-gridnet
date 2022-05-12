@@ -1,6 +1,7 @@
 """Test the models."""
 import aiohttp
 import pytest
+from aresponses import ResponsesMockServer
 
 from gridnet import Device, GridNet, SmartBridge
 
@@ -8,7 +9,7 @@ from . import load_fixtures
 
 
 @pytest.mark.asyncio
-async def test_device(aresponses):
+async def test_device(aresponses: ResponsesMockServer) -> None:
     """Test request from the device - Device object."""
     aresponses.add(
         "example.com",
@@ -33,7 +34,7 @@ async def test_device(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_smartbridge(aresponses):
+async def test_smartbridge(aresponses: ResponsesMockServer) -> None:
     """Test request from the device - SmartBridge object."""
     aresponses.add(
         "example.com",

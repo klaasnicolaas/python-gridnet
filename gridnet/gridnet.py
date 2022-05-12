@@ -22,7 +22,7 @@ class GridNet:
     """Main class for handling connections with the devices."""
 
     host: str
-    request_timeout: int = 10
+    request_timeout: float = 10.0
     session: aiohttp.ClientSession | None = None
 
     _close_session: bool = False
@@ -32,8 +32,8 @@ class GridNet:
         uri: str,
         *,
         method: str = hdrs.METH_GET,
-        data: dict | None = None,
-    ) -> dict[str, Any]:
+        data: dict[str, Any] | None = None,
+    ) -> Any:
         """Handle a request to the device.
 
         Args:
@@ -115,7 +115,7 @@ class GridNet:
         """
         return self
 
-    async def __aexit__(self, *_exc_info) -> None:
+    async def __aexit__(self, *_exc_info: str) -> None:
         """Async exit.
 
         Args:

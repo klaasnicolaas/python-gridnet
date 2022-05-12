@@ -27,7 +27,7 @@ class GridNet:
 
     _close_session: bool = False
 
-    async def request(
+    async def _request(
         self,
         uri: str,
         *,
@@ -82,7 +82,7 @@ class GridNet:
                 "Error occurred while communicating with the device"
             ) from exception
 
-        return await response.text()
+        return json.loads(await response.text())
 
     async def device(self) -> Device:
         """Get the latest values from a the device.
@@ -90,8 +90,7 @@ class GridNet:
         Returns:
             A Device data object from the API.
         """
-        data = await self.request("info")
-        data = json.loads(data)
+        data = await self._request("info")
         return Device.from_dict(data)
 
     async def smartbridge(self) -> SmartBridge:
@@ -100,8 +99,7 @@ class GridNet:
         Returns:
             A SmartBridge data object from the API.
         """
-        data = await self.request("meter/now")
-        data = json.loads(data)
+        data = await self._request("meter/now")
         return SmartBridge.from_dict(data)
 
     async def close(self) -> None:

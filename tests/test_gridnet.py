@@ -1,4 +1,5 @@
 """Basic tests for the API."""
+# pylint: disable=protected-access
 import asyncio
 from unittest.mock import patch
 
@@ -26,7 +27,7 @@ async def test_json_request(aresponses):
     )
     async with aiohttp.ClientSession() as session:
         client = GridNet("example.com", session=session)
-        await client.request("test")
+        await client._request("test")
         await client.close()
 
 
@@ -44,22 +45,7 @@ async def test_internal_session(aresponses):
         ),
     )
     async with GridNet("example.com") as client:
-        await client.request("test")
-
-
-@pytest.mark.asyncio
-async def test_text_request(aresponses):
-    """Test non JSON response is handled correctly."""
-    aresponses.add(
-        "example.com",
-        "/test",
-        "GET",
-        aresponses.Response(status=200, text="OK"),
-    )
-    async with aiohttp.ClientSession() as session:
-        client = GridNet("example.com", session=session)
-        response = await client.request("test")
-        assert response == "OK"
+        await client._request("test")
 
 
 @pytest.mark.asyncio
@@ -88,7 +74,7 @@ async def test_client_error():
         with patch.object(
             session, "request", side_effect=aiohttp.ClientError
         ), pytest.raises(GridNetConnectionError):
-            assert await client.request("test")
+            assert await client._request("test")
 
 
 @pytest.mark.asyncio
@@ -105,7 +91,7 @@ async def test_http_error401(aresponses, status):
     async with aiohttp.ClientSession() as session:
         client = GridNet(host="example.com", session=session)
         with pytest.raises(GridNetError):
-            assert await client.request("test")
+            assert await client._request("test")
 
 
 @pytest.mark.asyncio
@@ -121,7 +107,7 @@ async def test_http_error400(aresponses):
     async with aiohttp.ClientSession() as session:
         client = GridNet(host="example.com", session=session)
         with pytest.raises(GridNetError):
-            assert await client.request("test")
+            assert await client._request("test")
 
 
 @pytest.mark.asyncio
@@ -140,7 +126,7 @@ async def test_http_error500(aresponses):
     async with aiohttp.ClientSession() as session:
         client = GridNet(host="example.com", session=session)
         with pytest.raises(GridNetError):
-            assert await client.request("test")
+            assert await client._request("test")
 
 
 @pytest.mark.asyncio
@@ -159,4 +145,4 @@ async def test_no_success(aresponses):
     async with aiohttp.ClientSession() as session:
         client = GridNet(host="example.com", session=session)
         with pytest.raises(GridNetError):
-            assert await client.request("test")
+            assert await client._request("test")

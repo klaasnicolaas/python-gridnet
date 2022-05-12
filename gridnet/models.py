@@ -25,7 +25,7 @@ class SmartBridge:
         """
         data = data["elec"]
 
-        def convert(value):
+        def convert(value: float) -> float:
             """Convert the unit of measurement.
 
             Args:
@@ -35,7 +35,7 @@ class SmartBridge:
                 Value in kWh rounded with 1 decimal.
             """
             value = value / 1000
-            return round(value, 1)
+            return float(round(value, 1))
 
         return SmartBridge(
             power_flow=data["power"]["now"].get("value"),
@@ -67,10 +67,10 @@ class Device:
         """
 
         return Device(
-            n2g_id=data.get("id"),
-            model=data.get("model"),
-            batch=data.get("batch"),
-            firmware=data.get("fw"),
-            hardware=data.get("hw"),
-            manufacturer=data.get("mf"),
+            n2g_id=data["id"],
+            model=data["model"],
+            batch=data["batch"],
+            firmware=data["fw"],
+            hardware=data["hw"],
+            manufacturer=data["mf"],
         )

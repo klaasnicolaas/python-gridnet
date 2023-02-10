@@ -8,17 +8,17 @@
 [![License][license-shield]](LICENSE)
 
 [![GitHub Activity][commits-shield]][commits-url]
-[![Forks][forks-shield]][forks-url]
+[![PyPi Downloads][downloads-shield]][downloads-url]
+[![GitHub Last Commit][last-commit-shield]][commits-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![GitHub Last Commit][last-commit-shield]][commits-url]
 
 [![Code Quality][code-quality-shield]][code-quality]
-[![Maintainability][maintainability-shield]][maintainability-url]
-[![Code Coverage][codecov-shield]][codecov-url]
-
 [![Build Status][build-shield]][build-url]
 [![Typing Status][typing-shield]][typing-url]
+
+[![Maintainability][maintainability-shield]][maintainability-url]
+[![Code Coverage][codecov-shield]][codecov-url]
 
 Asynchronous Python client for Net2Grid devices.
 
@@ -169,14 +169,14 @@ SOFTWARE.
 <!-- MARKDOWN LINKS & IMAGES -->
 [build-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml/badge.svg
 [build-url]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml
-[code-quality-shield]: https://img.shields.io/lgtm/grade/python/g/klaasnicolaas/python-gridnet.svg?logo=lgtm&logoWidth=18
-[code-quality]: https://lgtm.com/projects/g/klaasnicolaas/python-gridnet/context:python
+[code-quality-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/codeql.yaml/badge.svg
+[code-quality]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/codeql.yaml
 [commits-shield]: https://img.shields.io/github/commit-activity/y/klaasnicolaas/python-gridnet.svg
 [commits-url]: https://github.com/klaasnicolaas/python-gridnet/commits/main
 [codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-gridnet/branch/main/graph/badge.svg?token=CXCSJBsRPE
 [codecov-url]: https://codecov.io/gh/klaasnicolaas/python-gridnet
-[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-gridnet.svg
-[forks-url]: https://github.com/klaasnicolaas/python-gridnet/network/members
+[downloads-shield]: https://img.shields.io/pypi/dm/gridnet
+[downloads-url]: https://pypistats.org/packages/gridnet
 [issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-gridnet.svg
 [issues-url]: https://github.com/klaasnicolaas/python-gridnet/issues
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg

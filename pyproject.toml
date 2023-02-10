@@ -17,6 +17,7 @@ classifiers = [
     "Natural Language :: English",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -29,7 +30,7 @@ aiohttp = ">=3.0.0"
 python = "^3.9"
 yarl = ">=1.6.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 aresponses = "^2.1.6"
 bandit = "^1.7.4"
 black = "^22.12"

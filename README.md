@@ -1,4 +1,5 @@
-## Python - Net2Grid Client
+<!-- Banner -->
+![alt Banner of the gridnet package](https://raw.githubusercontent.com/klaasnicolaas/python-gridnet/main/assets/header_gridnet-min.png)
 
 <!-- PROJECT SHIELDS -->
 [![GitHub Release][releases-shield]][releases]

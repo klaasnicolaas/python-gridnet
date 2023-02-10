@@ -8,10 +8,10 @@
 [![License][license-shield]](LICENSE)
 
 [![GitHub Activity][commits-shield]][commits-url]
-[![Forks][forks-shield]][forks-url]
+[![PyPi Downloads][downloads-shield]][downloads-url]
+[![GitHub Last Commit][last-commit-shield]][commits-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![GitHub Last Commit][last-commit-shield]][commits-url]
 
 [![Code Quality][code-quality-shield]][code-quality]
 [![Build Status][build-shield]][build-url]
@@ -175,8 +175,8 @@ SOFTWARE.
 [commits-url]: https://github.com/klaasnicolaas/python-gridnet/commits/main
 [codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-gridnet/branch/main/graph/badge.svg?token=CXCSJBsRPE
 [codecov-url]: https://codecov.io/gh/klaasnicolaas/python-gridnet
-[forks-shield]: https://img.shields.io/github/forks/klaasnicolaas/python-gridnet.svg
-[forks-url]: https://github.com/klaasnicolaas/python-gridnet/network/members
+[downloads-shield]: https://img.shields.io/pypi/dm/gridnet
+[downloads-url]: https://pypistats.org/packages/gridnet
 [issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-gridnet.svg
 [issues-url]: https://github.com/klaasnicolaas/python-gridnet/issues
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg

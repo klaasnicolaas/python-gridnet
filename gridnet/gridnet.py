@@ -6,11 +6,11 @@ import json
 import socket
 from dataclasses import dataclass
 from importlib import metadata
-from typing import Any
+from typing import Any, cast
 
-import aiohttp
 import async_timeout
-from aiohttp import hdrs
+from aiohttp import ClientError, ClientSession
+from aiohttp.hdrs import METH_GET
 from yarl import URL
 
 from .exceptions import GridNetConnectionError
@@ -23,7 +23,7 @@ class GridNet:
 
     host: str
     request_timeout: float = 10.0
-    session: aiohttp.ClientSession | None = None
+    session: ClientSession | None = None
 
     _close_session: bool = False
 
@@ -31,7 +31,7 @@ class GridNet:
         self,
         uri: str,
         *,
-        method: str = hdrs.METH_GET,
+        method: str = METH_GET,
         data: dict[str, Any] | None = None,
     ) -> Any:
         """Handle a request to the device.
@@ -41,11 +41,13 @@ class GridNet:
             method: HTTP Method to use.
             data: Dictionary of data to send to the API.
 
-        Returns:
+        Returns
+        -------
             A Python dictionary (text) with the response from
             a device.
 
-        Raises:
+        Raises
+        ------
             GridNetConnectionError: An error occurred while
                 communicating with the device.
         """
@@ -58,7 +60,7 @@ class GridNet:
         }
 
         if self.session is None:
-            self.session = aiohttp.ClientSession()
+            self.session = ClientSession()
             self._close_session = True
 
         try:
@@ -71,23 +73,26 @@ class GridNet:
                 )
                 response.raise_for_status()
         except asyncio.TimeoutError as exception:
+            msg = f"Timeout occurred while connecting to {self.host}"
             raise GridNetConnectionError(
-                "Timeout occurred while connecting to the device"
+                msg,
             ) from exception
         except (
-            aiohttp.ClientError,
+            ClientError,
             socket.gaierror,
         ) as exception:
+            msg = f"Error occurred while communicating with {self.host}"
             raise GridNetConnectionError(
-                "Error occurred while communicating with the device"
+                msg,
             ) from exception
 
-        return json.loads(await response.text())
+        return cast(dict[str, Any], json.loads(await response.text()))
 
     async def device(self) -> Device:
         """Get the latest values from a the device.
 
-        Returns:
+        Returns
+        -------
             A Device data object from the API.
         """
         data = await self._request("info")
@@ -96,7 +101,8 @@ class GridNet:
     async def smartbridge(self) -> SmartBridge:
         """Get the latest values from a the device.
 
-        Returns:
+        Returns
+        -------
             A SmartBridge data object from the API.
         """
         data = await self._request("meter/now")
@@ -110,7 +116,8 @@ class GridNet:
     async def __aenter__(self) -> GridNet:
         """Async enter.
 
-        Returns:
+        Returns
+        -------
             The GridNet object.
         """
         return self
@@ -119,6 +126,7 @@ class GridNet:
         """Async exit.
 
         Args:
+        ----
             _exc_info: Exec type.
         """
         await self.close()

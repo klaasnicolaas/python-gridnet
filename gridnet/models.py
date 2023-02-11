@@ -20,7 +20,8 @@ class SmartBridge:
         Args:
             data: Response data from the API.
 
-        Returns:
+        Returns
+        -------
             A SmartBridge object.
         """
         data = data["elec"]
@@ -31,7 +32,8 @@ class SmartBridge:
             Args:
                 value: input value.
 
-            Returns:
+            Returns
+            -------
                 Value in kWh rounded with 1 decimal.
             """
             value = value / 1000
@@ -62,10 +64,10 @@ class Device:
         Args:
             data: Response data from the API.
 
-        Returns:
+        Returns
+        -------
             A Device object.
         """
-
         return Device(
             n2g_id=data["id"],
             model=data["model"],

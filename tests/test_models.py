@@ -1,6 +1,5 @@
 """Test the models."""
-import aiohttp
-import pytest
+from aiohttp import ClientSession
 from aresponses import ResponsesMockServer
 
 from gridnet import Device, GridNet, SmartBridge
@@ -8,11 +7,10 @@ from gridnet import Device, GridNet, SmartBridge
 from . import load_fixtures
 
 
-@pytest.mark.asyncio
 async def test_device(aresponses: ResponsesMockServer) -> None:
     """Test request from the device - Device object."""
     aresponses.add(
-        "example.com",
+        "127.0.0.1",
         "/info",
         "GET",
         aresponses.Response(
@@ -21,8 +19,8 @@ async def test_device(aresponses: ResponsesMockServer) -> None:
         ),
     )
 
-    async with aiohttp.ClientSession() as session:
-        client = GridNet(host="example.com", session=session)
+    async with ClientSession() as session:
+        client = GridNet(host="127.0.0.1", session=session)
         device: Device = await client.device()
         assert device
         assert device.n2g_id == "84df:0c11:9999:3795"
@@ -33,11 +31,10 @@ async def test_device(aresponses: ResponsesMockServer) -> None:
         assert device.manufacturer == "NET2GRID"
 
 
-@pytest.mark.asyncio
 async def test_smartbridge(aresponses: ResponsesMockServer) -> None:
     """Test request from the device - SmartBridge object."""
     aresponses.add(
-        "example.com",
+        "127.0.0.1",
         "/meter/now",
         "GET",
         aresponses.Response(
@@ -46,8 +43,8 @@ async def test_smartbridge(aresponses: ResponsesMockServer) -> None:
         ),
     )
 
-    async with aiohttp.ClientSession() as session:
-        client = GridNet(host="example.com", session=session)
+    async with ClientSession() as session:
+        client = GridNet(host="127.0.0.1", session=session)
         smartbridge: SmartBridge = await client.smartbridge()
         assert smartbridge
         assert smartbridge.power_flow == 338

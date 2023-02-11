@@ -47,7 +47,7 @@ from gridnet import GridNet
 async def main():
     """Show example on getting data from your device."""
     async with GridNet(
-        host="example.com",
+        host="127.0.0.1",
     ) as client:
         device = await client.device()
         smartbridge = await client.smartbridge()

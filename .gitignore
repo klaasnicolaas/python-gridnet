@@ -116,8 +116,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-.dmypy.json
-dmypy.json
+
+# ruff
+.ruff_cache
+
+# Visual Studio Code
+.vscode
 
 # Pyre type checker
 .pyre/

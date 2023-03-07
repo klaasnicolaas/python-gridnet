@@ -18,9 +18,10 @@ class SmartBridge:
         """Return SmartBridge object from the API response.
 
         Args:
+        ----
             data: Response data from the API.
 
-        Returns
+        Returns:
         -------
             A SmartBridge object.
         """
@@ -30,9 +31,10 @@ class SmartBridge:
             """Convert the unit of measurement.
 
             Args:
+            ----
                 value: input value.
 
-            Returns
+            Returns:
             -------
                 Value in kWh rounded with 1 decimal.
             """
@@ -62,9 +64,10 @@ class Device:
         """Return Device object from the API response.
 
         Args:
+        ----
             data: Response data from the API.
 
-        Returns
+        Returns:
         -------
             A Device object.
         """

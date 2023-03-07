@@ -37,16 +37,17 @@ class GridNet:
         """Handle a request to the device.
 
         Args:
+        ----
             uri: Request URI, without '/', for example, 'status'
             method: HTTP Method to use.
             data: Dictionary of data to send to the API.
 
-        Returns
+        Returns:
         -------
             A Python dictionary (text) with the response from
             a device.
 
-        Raises
+        Raises:
         ------
             GridNetConnectionError: An error occurred while
                 communicating with the device.

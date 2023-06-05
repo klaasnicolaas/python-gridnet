@@ -23,7 +23,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 packages = [
-    { include = "gridnet" },
+    { include = "gridnet", from = "src" },
 ]
 
 [tool.poetry.dependencies]

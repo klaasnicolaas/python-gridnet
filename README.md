@@ -11,8 +11,7 @@
 [![GitHub Activity][commits-shield]][commits-url]
 [![PyPi Downloads][downloads-shield]][downloads-url]
 [![GitHub Last Commit][last-commit-shield]][commits-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+[![Open in Dev Containers][devcontainer-shield]][devcontainer]
 
 [![Code Quality][code-quality-shield]][code-quality]
 [![Build Status][build-shield]][build-url]
@@ -25,7 +24,9 @@ Asynchronous Python client for Net2Grid devices.
 
 ## About
 
-A python package with which you can read the data from a [NET2GRID][net2grid] device via a local api. Net2Grid supplies energy hardware to brands, that can market it as a white label product.
+A python package with which you can read the data from a [NET2GRID][net2grid] device
+via a local api. Net2Grid supplies energy hardware to brands, that can market it as a
+white label product.
 
 ## Supported SmartBridges
 
@@ -60,7 +61,9 @@ if __name__ == "__main__":
 
 ## Data
 
-You can read the following data with this package, the `power flow` entity can also give a negative value. The `energy` entities are total values of both low and high tariff together.
+You can read the following data with this package, the `power flow` entity can also
+give a negative value. The `energy` entities are total values of both low and high
+tariff together.
 
 ### Device
 
@@ -89,8 +92,14 @@ Thank you for being involved! :heart_eyes:
 
 ## Setting up development environment
 
-This Python project is fully managed using the [Poetry][poetry] dependency
-manager.
+The simplest way to begin is by utilizing the [Dev Container][devcontainer]
+feature of Visual Studio Code or by opening a CodeSpace directly on GitHub.
+By clicking the button below you immediately start a Dev Container in Visual Studio Code.
+
+[![Open in Dev Containers][devcontainer-shield]][devcontainer]
+
+This Python project relies on [Poetry][poetry] as its dependency manager,
+providing comprehensive management and control over project dependencies.
 
 You need at least:
 
@@ -135,7 +144,10 @@ poetry run pytest
 
 ## Trademark Legal Notices
 
-All product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
+All product names, trademarks and registered trademarks in this repository, are
+property of their respective owners, and are used by the author for identification
+purposes only. The use of these names, trademarks and brands, do not imply endorsement
+or affiliation.
 
 ## License
 
@@ -163,9 +175,6 @@ SOFTWARE.
 
 [pure-energie]: https://pure-energie.nl
 [net2grid]: https://www.net2grid.com
-[poetry-install]: https://python-poetry.org/docs/#installation
-[poetry]: https://python-poetry.org
-[pre-commit]: https://pre-commit.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [build-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml/badge.svg
@@ -176,10 +185,10 @@ SOFTWARE.
 [commits-url]: https://github.com/klaasnicolaas/python-gridnet/commits/main
 [codecov-shield]: https://codecov.io/gh/klaasnicolaas/python-gridnet/branch/main/graph/badge.svg?token=CXCSJBsRPE
 [codecov-url]: https://codecov.io/gh/klaasnicolaas/python-gridnet
+[devcontainer-shield]: https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode
+[devcontainer]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/klaasnicolaas/python-gridnet
 [downloads-shield]: https://img.shields.io/pypi/dm/gridnet
 [downloads-url]: https://pypistats.org/packages/gridnet
-[issues-shield]: https://img.shields.io/github/issues/klaasnicolaas/python-gridnet.svg
-[issues-url]: https://github.com/klaasnicolaas/python-gridnet/issues
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg
 [last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-gridnet.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
@@ -192,5 +201,7 @@ SOFTWARE.
 [typing-url]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/typing.yaml
 [releases-shield]: https://img.shields.io/github/release/klaasnicolaas/python-gridnet.svg
 [releases]: https://github.com/klaasnicolaas/python-gridnet/releases
-[stars-shield]: https://img.shields.io/github/stars/klaasnicolaas/python-gridnet.svg
-[stars-url]: https://github.com/klaasnicolaas/python-gridnet/stargazers
+
+[poetry-install]: https://python-poetry.org/docs/#installation
+[poetry]: https://python-poetry.org
+[pre-commit]: https://pre-commit.com

@@ -165,6 +165,8 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
+<hr>
+<sub>
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -172,11 +174,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-[pure-energie]: https://pure-energie.nl
-[net2grid]: https://www.net2grid.com
+</sub>
 
 <!-- MARKDOWN LINKS & IMAGES -->
+[pure-energie]: https://pure-energie.nl
+[net2grid]: https://www.net2grid.com
 [build-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml/badge.svg
 [build-url]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml
 [code-quality-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/codeql.yaml/badge.svg

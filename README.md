@@ -173,10 +173,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[pure-energie]: https://pure-energie.nl
-[net2grid]: https://www.net2grid.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
+[pure-energie]: https://pure-energie.nl
+[net2grid]: https://www.net2grid.com
 [build-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml/badge.svg
 [build-url]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/tests.yaml
 [code-quality-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/codeql.yaml/badge.svg

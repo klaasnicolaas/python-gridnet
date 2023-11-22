@@ -45,6 +45,7 @@ import asyncio
 
 from gridnet import GridNet
 
+
 async def main():
     """Show example on getting data from your device."""
     async with GridNet(
@@ -54,6 +55,7 @@ async def main():
         smartbridge = await client.smartbridge()
         print(device)
         print(smartbridge)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -103,7 +105,7 @@ providing comprehensive management and control over project dependencies.
 
 You need at least:
 
-- Python 3.9+
+- Python 3.11+
 - [Poetry][poetry-install]
 
 Install all packages, including all development requirements:

@@ -37,7 +37,6 @@ Changelog = "https://github.com/klaasnicolaas/python-gridnet/releases"
 [tool.poetry.group.dev.dependencies]
 ruff = "0.1.6"
 aresponses = "2.1.6"
-black = "23.11.0"
 blacken-docs = "1.16.0"
 codespell = "2.2.6"
 coverage = {version = "7.3.2", extras = ["toml"]}
@@ -137,6 +136,18 @@ ignore = [
   "D213", # Conflicts with other rules
   "D417", # False positives in some occasions
   "PLR2004", # Just annoying, not really useful
+
+  # Formatter conflicts
+  "COM812",
+  "COM819",
+  "D206",
+  "E501",
+  "ISC001",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "W191",
 ]
 
 [tool.ruff.flake8-pytest-style]

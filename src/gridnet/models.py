@@ -24,6 +24,7 @@ class SmartBridge:
         Returns:
         -------
             A SmartBridge object.
+
         """
         data = data["elec"]
 
@@ -37,6 +38,7 @@ class SmartBridge:
             Returns:
             -------
                 Value in kWh rounded with 1 decimal.
+
             """
             value = value / 1000
             return float(round(value, 1))
@@ -70,6 +72,7 @@ class Device:
         Returns:
         -------
             A Device object.
+
         """
         return Device(
             n2g_id=data["id"],

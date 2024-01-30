@@ -50,6 +50,7 @@ class GridNet:
         ------
             GridNetConnectionError: An error occurred while
                 communicating with the device.
+
         """
         version = metadata.version(__package__)
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
@@ -74,17 +75,13 @@ class GridNet:
                 response.raise_for_status()
         except asyncio.TimeoutError as exception:
             msg = f"Timeout occurred while connecting to {self.host}"
-            raise GridNetConnectionError(
-                msg,
-            ) from exception
+            raise GridNetConnectionError(msg) from exception
         except (
             ClientError,
             socket.gaierror,
         ) as exception:
             msg = f"Error occurred while communicating with {self.host}"
-            raise GridNetConnectionError(
-                msg,
-            ) from exception
+            raise GridNetConnectionError(msg) from exception
 
         return cast(dict[str, Any], json.loads(await response.text()))
 
@@ -94,6 +91,7 @@ class GridNet:
         Returns
         -------
             A Device data object from the API.
+
         """
         data = await self._request("info")
         return Device.from_dict(data)
@@ -104,6 +102,7 @@ class GridNet:
         Returns
         -------
             A SmartBridge data object from the API.
+
         """
         data = await self._request("meter/now")
         return SmartBridge.from_dict(data)
@@ -119,6 +118,7 @@ class GridNet:
         Returns
         -------
             The GridNet object.
+
         """
         return self
 
@@ -128,5 +128,6 @@ class GridNet:
         Args:
         ----
             _exc_info: Exec type.
+
         """
         await self.close()

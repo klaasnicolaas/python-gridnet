@@ -73,7 +73,7 @@ class GridNet:
                     headers=headers,
                 )
                 response.raise_for_status()
-        except asyncio.TimeoutError as exception:
+        except TimeoutError as exception:
             msg = f"Timeout occurred while connecting to {self.host}"
             raise GridNetConnectionError(msg) from exception
         except (

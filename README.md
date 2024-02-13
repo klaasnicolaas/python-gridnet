@@ -194,9 +194,9 @@ SOFTWARE.
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg
 [last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-gridnet.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
-[maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
+[maintainability-shield]: https://api.codeclimate.com/v1/badges/beb2e3ce851874fde45b/maintainability
 [maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-gridnet/maintainability
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
+[project-stage-shield]: https://img.shields.io/badge/project%20stage-production%20ready-brightgreen.svg
 [pypi]: https://pypi.org/project/gridnet/
 [python-versions-shield]: https://img.shields.io/pypi/pyversions/gridnet
 [typing-shield]: https://github.com/klaasnicolaas/python-gridnet/actions/workflows/typing.yaml/badge.svg

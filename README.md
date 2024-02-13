@@ -155,7 +155,7 @@ or affiliation.
 
 MIT License
 
-Copyright (c) 2021-2023 Klaas Schoute
+Copyright (c) 2021-2024 Klaas Schoute
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -193,7 +193,7 @@ SOFTWARE.
 [downloads-url]: https://pypistats.org/packages/gridnet
 [license-shield]: https://img.shields.io/github/license/klaasnicolaas/python-gridnet.svg
 [last-commit-shield]: https://img.shields.io/github/last-commit/klaasnicolaas/python-gridnet.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [maintainability-shield]: https://api.codeclimate.com/v1/badges/0b3297077cbc525a837e/maintainability
 [maintainability-url]: https://codeclimate.com/github/klaasnicolaas/python-gridnet/maintainability
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg

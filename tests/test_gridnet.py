@@ -1,4 +1,5 @@
 """Basic tests for the API."""
+
 # pylint: disable=protected-access
 import asyncio
 from unittest.mock import patch
@@ -70,11 +71,14 @@ async def test_client_error() -> None:
     """Test request client error from the API."""
     async with ClientSession() as session:
         client = GridNet(host="127.0.0.1", session=session)
-        with patch.object(
-            session,
-            "request",
-            side_effect=ClientError,
-        ), pytest.raises(GridNetConnectionError):
+        with (
+            patch.object(
+                session,
+                "request",
+                side_effect=ClientError,
+            ),
+            pytest.raises(GridNetConnectionError),
+        ):
             assert await client._request("test")
 
 

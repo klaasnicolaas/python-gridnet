@@ -1,4 +1,5 @@
 """Asynchronous Python client for NET2GRID devices."""
+
 from pathlib import Path
 
 

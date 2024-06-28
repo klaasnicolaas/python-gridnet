@@ -16,6 +16,8 @@ from yarl import URL
 from .exceptions import GridNetConnectionError
 from .models import Device, SmartBridge
 
+VERSION = metadata.version(__package__)
+
 
 @dataclass
 class GridNet:
@@ -53,11 +55,10 @@ class GridNet:
                 communicating with the device.
 
         """
-        version = metadata.version(__package__)
         url = URL.build(scheme="http", host=self.host, path="/").join(URL(uri))
 
         headers = {
-            "User-Agent": f"PythonGridNet/{version}",
+            "User-Agent": f"PythonGridNet/{VERSION}",
             "Accept": "application/json, text/plain, */*",
         }
 

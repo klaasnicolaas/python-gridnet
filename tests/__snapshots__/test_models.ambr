@@ -1,0 +1,7 @@
+# serializer version: 1
+# name: test_device
+  Device(n2g_id='84df:0c11:9999:3795', model='SBWF3102', batch='SBP-HMX-210318', firmware='1.6.16', hardware=1, manufacturer='NET2GRID')
+# ---
+# name: test_smartbridge
+  SmartBridge(power_flow=338, energy_consumption_total=17762.1, energy_production_total=21214.6)
+# ---

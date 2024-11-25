@@ -7,7 +7,7 @@ from .models import Device, SmartBridge
 __all__ = [
     "Device",
     "GridNet",
-    "GridNetError",
     "GridNetConnectionError",
+    "GridNetError",
     "SmartBridge",
 ]

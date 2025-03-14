@@ -7,7 +7,7 @@ import json
 import socket
 from dataclasses import dataclass
 from importlib import metadata
-from typing import Any, Self, cast
+from typing import Any, Self
 
 from aiohttp import ClientError, ClientSession
 from aiohttp.hdrs import METH_GET
@@ -85,7 +85,7 @@ class GridNet:
             msg = f"Error occurred while communicating with {self.host}"
             raise GridNetConnectionError(msg) from exception
 
-        return cast(dict[str, Any], json.loads(await response.text()))
+        return json.loads(await response.text())
 
     async def device(self) -> Device:
         """Get the latest values from a the device.

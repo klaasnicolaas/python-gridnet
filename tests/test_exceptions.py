@@ -1,6 +1,5 @@
 """Test exceptions for GridNet package."""
 
-# pylint: disable=protected-access
 import pytest
 from aresponses import ResponsesMockServer
 

@@ -1,4 +1,3 @@
-# pylint: disable=W0621
 """Asynchronous Python client for a NET2GRID device."""
 
 import asyncio

@@ -20,7 +20,10 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = ["aiohttp>=3.0.0", "yarl>=1.6.0"]
+dependencies = [
+  "aiohttp>=3.0.0",
+  "yarl>=1.6.0"
+]
 
 [tool.poetry]
 packages = [

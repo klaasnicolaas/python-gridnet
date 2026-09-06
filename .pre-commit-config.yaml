@@ -83,11 +83,12 @@ repos:
         types: [text]
         entry: poetry run end-of-file-fixer
         stages: [commit, push, manual]
-      - id: mypy
-        name: 🆎 Static type checking using mypy
+      - id: ty
+        name: 🆎 Static type checking using ty
         language: system
         types: [python]
-        entry: poetry run mypy
+        entry: poetry run ty check examples src tests
+        pass_filenames: false
       - id: no-commit-to-branch
         name: 🛑 Don't commit to main branch
         language: system
@@ -102,11 +103,6 @@ repos:
         entry: poetry check
         pass_filenames: false
         always_run: true
-      - id: pylint
-        name: 🌟 Starring code with pylint
-        language: system
-        types: [python]
-        entry: poetry run pylint
       - id: pytest
         name: 🧪 Running tests and test coverage with pytest
         language: system

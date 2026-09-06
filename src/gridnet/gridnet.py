@@ -16,7 +16,7 @@ from yarl import URL
 from .exceptions import GridNetConnectionError
 from .models import Device, SmartBridge
 
-VERSION = metadata.version(__package__)
+VERSION = metadata.version("gridnet")
 
 
 @dataclass

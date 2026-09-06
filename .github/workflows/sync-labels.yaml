@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: 🚀 Run Label Syncer
-        uses: micnncim/action-label-syncer@3abd5ab72fda571e69fffd97bd4e0033dd5f495c # v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 🚀 Synchronize labels with Label Blueprint
+        uses: klaasnicolaas/action-label-blueprint@90f2ea1ff380df2e6c1c83f39797998f54cc97ab # v1.1.0
+        with:
+          labels-file: .github/labels.yml

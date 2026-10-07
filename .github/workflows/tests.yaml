@@ -32,6 +32,8 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ matrix.python }}
+      - name: 🐍 Install Python
+        run: uv python install
       - name: 🏗 Install dependencies
         run: uv sync --locked
       - name: 🚀 Run pytest
@@ -65,6 +67,8 @@ jobs:
         with:
           enable-cache: true
           python-version: ${{ env.DEFAULT_PYTHON }}
+      - name: 🐍 Install Python
+        run: uv python install
       - name: 🏗 Install dependencies
         run: uv sync --locked
       - name: 🚀 Process coverage results

@@ -9,7 +9,7 @@ from gridnet import GridNet
 
 
 @pytest.fixture(name="gridnet_client")
-async def client() -> AsyncGenerator[GridNet, None]:
+async def client() -> AsyncGenerator[GridNet]:
     """Fixture for the GridNet client."""
     async with (
         ClientSession() as session,
